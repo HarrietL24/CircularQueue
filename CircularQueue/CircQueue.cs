@@ -12,6 +12,8 @@ namespace CircularQueue
         int max;
         int count = 0;
 
+        public int values { get { return end; } }
+
         public CircQueue(int size)
         {
             max = size;
@@ -19,12 +21,16 @@ namespace CircularQueue
 
         }
 
-        public void CircEnQueue(int item)
+        public void EnQueue(int item)
         {
             if (end < max)
             {
                 cqueue[end] = item;
-                end++;
+                end++;   
+            }
+            if (end == max)
+            {
+                end = 0;
             }
             else
             {
@@ -33,16 +39,37 @@ namespace CircularQueue
 
         }
 
-        public int CircDeQueue()
+        public int DeQueue()
         {
-            if ()
+            if (front == end && end == count)
             {
+                int removeitem = cqueue[front];
+                front++;
+                count--;
+                return removeitem;
 
+            }
+            if (front == max)
+            {
+                front = 0;
+                return 0;
+           
             }
             else
             {
                 throw new Exception("CIRCULAR QUEUE EMPTY!");
             }
+
+            public void Print() 
+            {
+               /*for (int i = 0; i < ; i++)
+                {
+                    Console.WriteLine(cqueue[i]);
+                }*/
+
+            }
+
+
         }
 
 
